@@ -1,0 +1,13 @@
+{
+	"env": {
+		"builtin": true,
+		"browser": true,
+		"node": true
+	},
+	"globals": {},
+	"settings": {},
+	"rules": {
+		"no-unused-vars": "off",
+		"no-undef": "off"
+	}
+}

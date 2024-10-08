@@ -1,0 +1,21 @@
+{
+	"useTabs": true,
+	"singleQuote": false,
+	"trailingComma": "all",
+
+	"overrides": [
+		{
+			"files": ["**/*.json", ".oxlintrc"],
+			"excludeFiles": ["**/node_modules/*", "extensions.json"],
+			"options": {
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": ["App.code-workspace", "extensions.json"],
+			"options": {
+				"trailingComma": "all"
+			}
+		}
+	]
+}

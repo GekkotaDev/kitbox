@@ -1,0 +1,84 @@
+{
+	"folders": [
+		{
+			"name": "~",
+			"path": "..",
+		},
+		{
+			"name": "native",
+			"path": "../app/src-tauri",
+		},
+		{
+			"name": "screening",
+			"path": "../screening/src",
+		},
+		{
+			"path": "../app/src",
+		},
+	],
+	"settings": {
+		"eslint.validate": [
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"svelte",
+		],
+		"html.autoClosingTags": true,
+		"oxc_language_server.configPath": ".oxlintrc",
+
+		// #region Editor
+		"editor.acceptSuggestionOnCommitCharacter": false,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "always",
+		},
+		"editor.tabSize": 2,
+		// #endregion
+
+		// #region Files
+		"files.associations": { "*.svx": "markdown" },
+		"files.watcherExclude": {
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true,
+			"**/node_modules/*/**": true,
+			"**/.hg/store/**": true,
+			"**/src-tauri/target": true,
+		},
+		// #endregion
+
+		// #region Tailwind CSS
+		"tailwindCSS.classAttributes": [
+			"class",
+			"className",
+			"ngClass",
+			".*Styles",
+			".*Classes",
+		],
+		"tailwindCSS.experimental.classRegex": [
+			["\\/\\* tailwind \\*\\/ ([^;]*)", "'([^']*)'"],
+			["\\/\\* tailwind \\*\\/ ([^;]*)", "\"([^\"]*)\""],
+			["\\/\\* tailwind \\*\\/ ([^;]*)", "\\`([^\\`]*)\\`"],
+			["\\/\\* tw \\*\\/ ([^;]*)", "'([^']*)'"],
+			["\\/\\* tw \\*\\/ ([^;]*)", "\"([^\"]*)\""],
+			["\\/\\* tw \\*\\/ ([^;]*)", "\\`([^\\`]*)\\`"],
+			["tw([^;]*)", "\\`([^\\`]*)\\`"],
+		],
+		// #endregion
+
+		// #region File Nesting
+		"explorer.fileNesting.enabled": true,
+		"explorer.fileNesting.expand": false,
+		"explorer.fileNesting.patterns": {
+			".prettierrc": ".prettierignore",
+			"Cargo.toml": "Cargo.lock, tauri.conf.json, build.rs",
+			"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, pnpm-workspace.yaml, turbo.json",
+			"svelte.config.js": "components.json, tailwind.config.*, vite.config.*",
+			"tsconfig.json": "tsconfig.*.json, *.d.ts, .eslintrc-*.json",
+			"+page.svelte": "+page.ts, +page.server.ts, +page.spec.ts",
+			"+layout.svelte": "+layout.ts, +layout.server.ts, +layout.spec.ts",
+			"*.svelte": "${capture}.spec.ts",
+			"*.ts": "${capture}.js, ${capture}.*.ts",
+		},
+		// #endregion
+	},
+}
