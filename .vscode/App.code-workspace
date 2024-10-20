@@ -24,8 +24,8 @@
 			"typescriptreact",
 			"svelte",
 		],
+		"eslint.useFlatConfig": true,
 		"html.autoClosingTags": true,
-		"oxc_language_server.configPath": ".oxlintrc",
 
 		// #region Editor
 		"editor.acceptSuggestionOnCommitCharacter": false,
