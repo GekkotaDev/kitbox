@@ -17,13 +17,8 @@
 		},
 	],
 	"settings": {
-		"eslint.validate": [
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"svelte",
-		],
+		"css.lint.unknownAtRules": "ignore",
+		"css.customData": [".vscode/css.json"],
 		"eslint.useFlatConfig": true,
 		"html.autoClosingTags": true,
 
@@ -33,6 +28,33 @@
 			"source.fixAll": "always",
 		},
 		"editor.tabSize": 2,
+		// #endregion
+
+		// #region ESLint
+		"eslint.rules.customizations": [
+			{
+				"rule": "@stylistic/*",
+				"fixable": true,
+				"severity": "off",
+			},
+			{
+				"rule": "perfectionist/*",
+				"fixable": true,
+				"severity": "off",
+			},
+			{
+				"rule": "simple-import-sort/*",
+				"fixable": true,
+				"severity": "off",
+			},
+		],
+		"eslint.validate": [
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"svelte",
+		],
 		// #endregion
 
 		// #region Files
@@ -70,13 +92,13 @@
 		"explorer.fileNesting.expand": false,
 		"explorer.fileNesting.patterns": {
 			".prettierrc": ".prettierignore",
-			"Cargo.toml": "Cargo.lock, tauri.conf.json, build.rs",
+			"Cargo.toml": "Cargo.lock, tauri.conf.json, tauri.*.conf.json, build.rs",
 			"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, pnpm-workspace.yaml, turbo.json",
-			"svelte.config.js": "components.json, tailwind.config.*, vite.config.*",
+			"svelte.config.js": "components.json, tailwind.config.*, vite.config.*, vitest.*.js, vitest.*.ts, postcss.config.*",
 			"tsconfig.json": "tsconfig.*.json, *.d.ts, .eslintrc-*.json",
 			"+page.svelte": "+page.ts, +page.server.ts, +page.spec.ts",
 			"+layout.svelte": "+layout.ts, +layout.server.ts, +layout.spec.ts",
-			"*.svelte": "${capture}.spec.ts",
+			"*.svelte": "${capture}.spec.ts, ${capture}.*.spec.ts",
 			"*.ts": "${capture}.js, ${capture}.*.ts",
 		},
 		// #endregion
