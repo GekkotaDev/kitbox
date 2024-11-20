@@ -5,6 +5,18 @@
 
 	"overrides": [
 		{
+			"files": ["**/*.svelte"],
+			"options": {
+				"plugins": ["prettier-plugin-svelte"]
+			}
+		},
+		{
+			"files": ["**/*.toml"],
+			"options": {
+				"plugins": ["prettier-plugin-toml"]
+			}
+		},
+		{
 			"files": ["**/*.json", ".oxlintrc"],
 			"excludeFiles": ["**/node_modules/*", "extensions.json"],
 			"options": {
