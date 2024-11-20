@@ -1,0 +1,10 @@
+{ "type": "module", "types": "./dist/index.d.ts", "main": "./dist/index.cjs",
+"module": "./dist/index.js", "exports": { ".": { "types": "./dist/index.d.ts",
+"import": "./dist/index.js", "require": "./dist/index.cjs" }, "./*": "./*" },
+"typesVersions": { "*": { "*": [ "./dist/*", "./*" ] } }, "files": [ "dist" ],
+"name": "{{name}}", "version": "0.0.0", "description": "", "license":
+"UNLICENSED", "author": "", "keywords": [], "scripts": { "format": "prettier src
+-w --cache", "lint": "eslint src --cache --cache-location
+./.ignore/.eslintcache", "lint:fix": "prettier src -w --cache && eslint src
+--fix --cache --cache-location ./.ignore/.eslintcache", "test": "vitest run
+--cache" }, "devDependencies": { "tsup": "^8.3.5" } }
