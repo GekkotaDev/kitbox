@@ -1,36 +1,29 @@
-import { defineFlatConfig } from "eslint-define-config";
-
-import globals from "globals";
-
 // @ts-expect-error: no type definitions
 import eslint from "@eslint/js";
-import jsdoc from "eslint-plugin-jsdoc";
+import query from "@tanstack/eslint-plugin-query";
 // @ts-expect-error: no type definitions
 import prettier from "eslint-config-prettier";
+import { defineFlatConfig } from "eslint-define-config";
+import oxlint from "eslint-plugin-oxlint";
+import perfectionist from "eslint-plugin-perfectionist";
 // @ts-expect-error: no type definitions
 import promise from "eslint-plugin-promise";
-import sonarjs from "eslint-plugin-sonarjs";
 import svelte from "eslint-plugin-svelte";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import ts from "typescript-eslint";
 import unicorn from "eslint-plugin-unicorn";
-import oxlint from "eslint-plugin-oxlint";
+import globals from "globals";
+import ts from "typescript-eslint";
 
-const ignores = [
-	"**/*.config.*",
-	"**/.svelte-kit/",
-	"**/build/",
-	"**/dist*",
-	"**/src-tauri/",
-	"**/node_modules/",
-];
+import configs from "./eslint/configs.js";
+import ignores from "./eslint/ignores.js";
 
 export default [
 	...defineFlatConfig([
 		eslint.configs.recommended,
 		...ts.configs.recommended,
+		perfectionist.configs["recommended-natural"],
 		promise.configs["flat/recommended"],
 		unicorn.configs["flat/recommended"],
+		...query.configs["flat/recommended"],
 		...svelte.configs["flat/recommended"],
 		prettier,
 		...svelte.configs["flat/prettier"],
@@ -48,20 +41,9 @@ export default [
 				},
 			},
 
-			plugins: {
-				"simple-import-sort": simpleImportSort,
-			},
-
 			rules: {
 				"no-lonely-if": "warn",
-				"no-undef": 0,
-
-				"simple-import-sort/imports": "warn",
-				"simple-import-sort/exports": "warn",
-
-				"jsdoc/require-param-type": 0,
-				"jsdoc/require-returns-type": 0,
-				"jsdoc/tag-lines": 0,
+				"no-undef": "off",
 			},
 		},
 		{
@@ -69,27 +51,22 @@ export default [
 			ignores,
 
 			languageOptions: {
+				globals: {
+					...globals.browser,
+				},
+
 				parserOptions: {
 					parser: ts.parser,
 				},
 			},
+
+			rules: {
+				"unicorn/filename-case": 0,
+			},
 		},
-		{
-			...jsdoc.configs["flat/recommended"],
-			files: ["**/*.js"],
-			ignores,
-		},
-		{
-			...jsdoc.configs["flat/recommended-typescript"],
-			files: ["**/*.ts", "**/*.svelte"],
-			ignores,
-		},
-		{
-			...sonarjs.configs.recommended,
-			files: ["**/*.ts", "**/*.js", "./screening/"],
-			ignores,
-		},
+		...configs,
 	]),
 
+	// Disable rules already handled by oxlint.
 	oxlint.configs["flat/recommended"],
 ];
