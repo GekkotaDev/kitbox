@@ -1,0 +1,14 @@
+{
+	"private": true,
+	"name": "apps.native",
+	"version": "0.0.1",
+	"license": "MPL-2.0",
+	"type": "module",
+	"scripts": {
+		"build": "tauri build",
+		"dev": "tauri dev"
+	},
+	"dependencies": {
+		"apps.web": "workspace:*"
+	}
+}

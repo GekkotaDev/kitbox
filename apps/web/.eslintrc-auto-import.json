@@ -1,0 +1,32 @@
+{
+  "globals": {
+    "Enum": true,
+    "P": true,
+    "Temporal": true,
+    "afterNavigate": true,
+    "beforeNavigate": true,
+    "err": true,
+    "except": true,
+    "goto": true,
+    "match": true,
+    "none": true,
+    "ofTypes": true,
+    "ok": true,
+    "onDestroy": true,
+    "onMount": true,
+    "onNavigate": true,
+    "pattern": true,
+    "pipe": true,
+    "preloadCode": true,
+    "preloadData": true,
+    "pushState": true,
+    "replaceState": true,
+    "route": true,
+    "some": true,
+    "types": true,
+    "defer": true,
+    "ofType": true,
+    "satisfiesAs": true,
+    "unwrapType": true
+  }
+}
