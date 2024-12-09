@@ -1,0 +1,2 @@
+Remove-Item .ignore/.eslintcache
+
