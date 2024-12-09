@@ -1,0 +1,22 @@
+procs:
+  native:dev:
+    shell: "pwsh -File scripts/native.dev.ps1"
+
+  web:dev:
+    shell: "pwsh -File scripts/web.dev.ps1"
+
+  native:bacon:
+    shell: "pwsh -File scripts/native.bacon.ps1"
+
+  web:lint:
+    shell: "pwsh -File scripts/web.lint.ps1"
+
+  web:test:
+    shell: "pwsh -File scripts/web.test.ps1"
+
+  web:format:
+    shell: "pwsh -File scripts/web.format.ps1"
+
+  shell:
+    cmd:
+      - pwsh
