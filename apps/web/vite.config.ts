@@ -1,6 +1,7 @@
 import { enhancedImages } from "@sveltejs/enhanced-img";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { svelteInspector } from "@sveltejs/vite-plugin-svelte-inspector";
+import { svelteTesting } from "@testing-library/svelte/vite";
 import { SvelteKitPWA } from "@vite-pwa/sveltekit";
 import { MagicRegExpTransformPlugin } from "magic-regexp/transform";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -38,6 +39,21 @@ export default defineConfig({
 					imports: ["route"],
 				},
 
+        {
+          from: "pipesharp",
+          imports: ["pipe"]
+        },
+
+        {
+					from: "result",
+					imports: ["ok", "error", "result"],
+				},
+				{
+					from: "result",
+					imports: ["AsyncResult", "Result"],
+					type: true,
+				},
+
 				{
 					from: "svelte",
 					imports: ["onDestroy", "onMount"],
@@ -49,22 +65,18 @@ export default defineConfig({
 				},
 
 				{
-					from: "ts-brix",
-					imports: [
-						"Enum",
-						"P",
-						"defer",
-						"err",
-						"except",
-						"match",
-						"ofType",
-						"ok",
-						"none",
-						"pattern",
-						"pipe",
-						"some",
-						"types",
-					],
+					from: "ts-pattern",
+					imports: ["match", "P"],
+				},
+
+				{
+					from: "unionize",
+					imports: [["unionize", "union"], "ofType"],
+				},
+				{
+					from: "unionize",
+					imports: [["UnionOf", "Union"]],
+					type: true,
 				},
 			],
 
@@ -110,6 +122,8 @@ export default defineConfig({
      */
 		purgePolyfills.vite({}),
 
+    svelteTesting(),
+
 		visualizer({
 			emitFile: true,
 			filename: "bundle-size.html",
@@ -121,8 +135,11 @@ export default defineConfig({
 			provider: "v8",
 		},
 
+		environment: "jsdom",
 		globals: true,
 		include: ["src/**/*.{test,spec}.{js,ts}"],
+
+		setupFiles: ["./vitest.setup.js"],
 
 		typecheck: {
 			enabled: true,
