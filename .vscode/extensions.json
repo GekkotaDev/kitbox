@@ -1,14 +1,13 @@
 {
-	"recommendations": [
-		"antfu.iconify",
-		"bradlc.vscode-tailwindcss",
-		"dbaeumer.vscode-eslint",
-		"esbenp.prettier-vscode",
-		"oxc.oxc-vscode",
-		"rust-lang.rust-analyzer",
-		"svelte.svelte-vscode",
-		"tauri-apps.tauri-vscode",
-		"vadimcn.vscode-lldb"
-	],
-	"unwantedRecommendations": []
+  "recommendations": [
+    "antfu.iconify",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "rust-lang.rust-analyzer",
+    "svelte.svelte-vscode",
+    "tauri-apps.tauri-vscode",
+    "vadimcn.vscode-lldb"
+  ],
+  "unwantedRecommendations": []
 }
