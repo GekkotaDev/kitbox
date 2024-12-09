@@ -2,7 +2,7 @@
 	"private": true,
 	"description": "",
 	"type": "module",
-	"packageManager": "pnpm@9.12.0",
+	"packageManager": "pnpm@9.15.0",
 	"scripts": {
 		"generate": "plop",
 		"g": "plop",
@@ -40,10 +40,11 @@
 		"oxlint": "catalog:qa",
 		"plop": "^4.0.1",
 		"prettier": "catalog:qa",
-		"prettier-plugin-svelte": "^3.2.8",
+		"prettier-plugin-svelte": "^3.3.2",
+		"prettier-plugin-tailwindcss": "^0.6.9",
 		"prettier-plugin-toml": "^2.0.1",
-		"taze": "^0.17.2",
-		"turbo": "^2.1.3",
+		"taze": "^0.18.0",
+		"turbo": "^2.3.3",
 		"typescript-eslint": "catalog:qa"
 	}
 }
