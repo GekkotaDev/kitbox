@@ -7,10 +7,9 @@ import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
  * @param {string} path
  */
 const alias = (key, path) => {
-	const aliases = {
-		key: path,
-	};
+	const aliases = {};
 
+	aliases[key] = path.endsWith("/") ? `${path}` : `${path}/`;
 	aliases[`${key}/*`] = path.endsWith("/") ? `${path}*` : `${path}/*`;
 
 	return aliases;
@@ -25,7 +24,8 @@ const config = {
 		}),
 
 		alias: {
-			...alias("$", "./src/lib/utils"),
+			...alias("_", "./src/lib/utils"),
+			...alias("$", "./src/lib/runes"),
 			...alias("$asset", "./src/assets"),
 			...alias("$component", "./src/lib/components"),
 			...alias("$model", "./src/lib/models"),

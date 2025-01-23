@@ -8,12 +8,10 @@
 		"g": "plop",
 		"format": "prettier --cache --write .",
 		"jsr": "pnpm dlx jsr",
-		"lint": "oxlint -c .eslintrc && eslint . --fix --cache --cache-location ./.ignore/.eslintcache"
+		"lint": "eslint . --fix"
 	},
 	"devDependencies": {
-		"@eslint/js": "catalog:qa",
-		"@stylistic/eslint-plugin-js": "catalog:qa",
-		"@stylistic/eslint-plugin-ts": "catalog:qa",
+		"@gcko/eslint-config": "^0.0.9",
 		"@tanstack/eslint-plugin-query": "catalog:qa",
 		"@tauri-apps/cli": "catalog:",
 		"@total-typescript/ts-reset": "catalog:qa",
@@ -25,26 +23,17 @@
 		"eslint-config-prettier": "catalog:qa",
 		"eslint-define-config": "catalog:qa",
 		"eslint-plugin-jest-dom": "catalog:qa",
-		"eslint-plugin-jsdoc": "catalog:qa",
-		"eslint-plugin-oxlint": "catalog:qa",
-		"eslint-plugin-perfectionist": "catalog:qa",
 		"eslint-plugin-playwright": "catalog:qa",
-		"eslint-plugin-promise": "catalog:qa",
-		"eslint-plugin-simple-import-sort": "catalog:qa",
 		"eslint-plugin-sonarjs": "catalog:qa",
 		"eslint-plugin-svelte": "catalog:qa",
 		"eslint-plugin-testing-library": "catalog:qa",
-		"eslint-plugin-unicorn": "catalog:qa",
-		"eslint-plugin-vitest": "catalog:qa",
 		"globals": "catalog:qa",
-		"oxlint": "catalog:qa",
 		"plop": "^4.0.1",
 		"prettier": "catalog:qa",
 		"prettier-plugin-svelte": "^3.3.2",
 		"prettier-plugin-tailwindcss": "^0.6.9",
 		"prettier-plugin-toml": "^2.0.1",
 		"taze": "^0.18.0",
-		"turbo": "^2.3.3",
-		"typescript-eslint": "catalog:qa"
+		"turbo": "^2.3.3"
 	}
 }

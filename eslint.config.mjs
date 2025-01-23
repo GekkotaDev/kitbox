@@ -1,72 +1,55 @@
-// @ts-expect-error: no type definitions
-import eslint from "@eslint/js";
-import query from "@tanstack/eslint-plugin-query";
-// @ts-expect-error: no type definitions
-import prettier from "eslint-config-prettier";
-import { defineFlatConfig } from "eslint-define-config";
-import oxlint from "eslint-plugin-oxlint";
-import perfectionist from "eslint-plugin-perfectionist";
-// @ts-expect-error: no type definitions
-import promise from "eslint-plugin-promise";
-import svelte from "eslint-plugin-svelte";
-import unicorn from "eslint-plugin-unicorn";
-import globals from "globals";
-import ts from "typescript-eslint";
+import { configs } from "@gcko/eslint-config";
 
-import configs from "./eslint/configs.js";
-import ignores from "./eslint/ignores.js";
+export default await configs({
+	extensions: {
+		prettier: true,
+		query: true,
+		svelte: true,
+		test: true,
+	},
 
-export default [
-	...defineFlatConfig([
-		eslint.configs.recommended,
-		...ts.configs.recommended,
-		perfectionist.configs["recommended-natural"],
-		promise.configs["flat/recommended"],
-		unicorn.configs["flat/recommended"],
-		...query.configs["flat/recommended"],
-		...svelte.configs["flat/recommended"],
-		prettier,
-		...svelte.configs["flat/prettier"],
-		{
-			ignores,
+	fp: [
+		"no-exceptions",
+		"no-inheritance",
+		"no-loops",
+		"no-mutability",
+		"no-side-effects",
+	],
 
-			languageOptions: {
-				globals: {
-					...globals.browser,
-					...globals.node,
-				},
+	importOrder: [
+		// CSS imports
+		[String.raw`.css$`],
 
-				parserOptions: {
-					parser: ts.parser,
-				},
-			},
+		// Side effect imports.
+		[String.raw`^\u0000`],
 
-			rules: {
-				"no-lonely-if": "warn",
-				"no-undef": "off",
-			},
-		},
-		{
-			files: ["**/*.svelte"],
-			ignores,
+		// Node.js builtins prefixed with `node:`.
+		[String.raw`^node:`],
 
-			languageOptions: {
-				globals: {
-					...globals.browser,
-				},
+		// Svelte APIs.
+		// Ideally these would be emphasized first and foremost.
+		[String.raw`^svelte\b`, String.raw`^svelte\/.*`],
 
-				parserOptions: {
-					parser: ts.parser,
-				},
-			},
+		[String.raw`^(\$$|\$\/)`, String.raw`^(_$|_\/)`, String.raw`^@?\w`],
 
-			rules: {
-				"unicorn/filename-case": 0,
-			},
-		},
-		...configs,
-	]),
+		// Features.
+		[String.raw`^\(features\)`, String.raw`^~\/`],
 
-	// Disable rules already handled by oxlint.
-	oxlint.configs["flat/recommended"],
-];
+		// SvelteKit Imports.
+		[String.raw`^\$app`, String.raw`^\$env`, String.raw`^\$lib`],
+
+		[String.raw`^\$`],
+
+		// Absolute imports and other imports such as Vue-style `@/foo`.
+		// Anything not matched in another group.
+		[String.raw`^`],
+
+		// Relative imports.
+		// Anything that starts with a dot.
+		[String.raw`^\.`],
+	],
+
+	tsconfigRootDir: import.meta.dirname,
+
+	typed: true,
+});

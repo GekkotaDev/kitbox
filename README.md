@@ -24,13 +24,12 @@ For reference, KitBox features the following in its tech stack.
 
 - 👟 Frontend powered by [SvelteKit](https://kit.svelte.dev/) w/ Svelte 5. Straightforward abstraction over vanilla JavaScript and a lightweight experience for end users.
 - ⚙️ Native platform code via [Tauri](https://v2.tauri.app/).
-- 🏭 [Turborepo](https://turbo.build/) + [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/). Established code quality assurance tooling at scale.
 - 🧪 [Vitest](https://vitest.dev/). Fast, comprehensive unit testing framework with integration into Vite's build pipeline.
 - 🪺 Opinionated file nesting configuration. It won't solve having too many configuration files but it will reduce visual clutter in your file explorer.
-- 🪄 [Automatic](https://github.com/unplugin/unplugin-auto-import) [imports](https://github.com/Mohamed-Kaizen/unplugin-svelte-components). No bundle bloat. Type safe. Use APIs and components directly as if they were built-in primitives.
+- 🪄 [Automatic](https://github.com/unplugin/unplugin-auto-import) [imports](https://github.com/Mohamed-Kaizen/unplugin-svelte-components). No bundle bloat. Type safe. Use APIs directly as if they were built-in primitives.
 - 🚦 [Typed routing](https://www.kitql.dev/docs/tools/06_vite-plugin-kit-routes). Opt-in automatic and transparent intellisense for your application's routes.
 - 🧰 Multiple utilities included out of the box. Enjoy pattern matching, result types, type safe context and more.
 
-It does not concern itself with anything server-side, that is outside of the scope of this template.
+It does not concern itself with server-side code, that is outside of the scope of this template.
 
 For PWA support, see `@vite-pwa/sveltekit`. The template should still be applicable even if Tauri is omitted post template cloning, just remove the native directory.
